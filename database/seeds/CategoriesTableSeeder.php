@@ -11,9 +11,8 @@ class CategoriesTableSeeder extends Seeder
      */
         public function run()
     {
-        $author = \App\Category::create([
-            'category_name'=>'Technology'
-
-        ]);
+        factory(App\Category::class, 50)->create()->each(function ($user) {
+            $user->categories()->save(factory(App\Category::class)->make());
+        });
     }
 }

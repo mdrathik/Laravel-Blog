@@ -34,8 +34,8 @@
                 <div class="text-inner d-flex align-items-center">
                     <div class="content">
                         <header class="post-header">
-                            <div class="category"><a href="#">{{$popularPost->category->category_name}}{{$i}}</a><a href="#">Technology</a></div><a href="post.html">
-                                <h2 class="h4">{{$popularPost->title}}</h2></a>
+                            <div class="category"><a href="#">{{$popularPost->category->category_name}}{{$i}}</a><a href="#">Technology</a></div>
+                            <a href="{{route('singlePost', $popularPost->slug)}}"><h2 class="h4">{{$popularPost->title}}</h2></a>
                         </header>
                         <p>{{$popularPost->body}}</p>
                             <footer class="post-footer d-flex align-items-center"><a href="#" class="author d-flex align-items-center flex-wrap">
@@ -56,7 +56,8 @@
                         <div class="text-inner d-flex align-items-center">
                             <div class="content">
                                 <header class="post-header">
-                                    <div class="category"><a href="#">{{$popularPost->category->category_name}}{{$i}}</a><a href="#">Technology</a></div><a href="post.html">
+                                    <div class="category"><a href="#">{{$popularPost->category->category_name}}{{$i}}</a><a href="#">Technology</a></div>
+                                    <a href="{{route('singlePost', $popularPost->slug)}}">
                                         <h2 class="h4">{{$popularPost->title}}</h2></a>
                                 </header>
                                 <p>{{$popularPost->body}}</p>
@@ -77,7 +78,9 @@
                         <div class="text-inner d-flex align-items-center">
                             <div class="content">
                                 <header class="post-header">
-                                    <div class="category"><a href="#">{{$popularPost->category->category_name}}{{$i}}</a><a href="#">Technology</a></div><a href="post.html">
+                                    <div class="category"><a href="#">{{$popularPost->category->category_name}}{{$i}}</a>
+                                        <a href="#">Technology</a></div>
+                                    <a href="{{route('singlePost', $popularPost->slug)}}">
                                         <h2 class="h4">{{$popularPost->title}}</h2></a>
                                 </header>
                                 <p>{{$popularPost->body}}</p>

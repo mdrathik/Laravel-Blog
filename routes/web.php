@@ -5,6 +5,8 @@ Route::get('/', 'FrontendController@index')->name('homePage');
 Route::prefix('blog')->group(function () {
     Route::get('/', 'FrontendController@blogPage')->name('blogPage');
     Route::get('/{slug}', 'FrontendController@SinglePost')->name('singlePost');
+    Route::get('/category/{slug}','FrontendController@CategoriesPost')->name('getByCategory');
+    Route::get('/search/result','FrontendController@Search')->name('Search');
 });
 
 
@@ -15,6 +17,14 @@ Route::get('test', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+
+
+
+Route::get('/redeem/{key}', 'FrontendController@redeem');
+
+
 
 
 Route::group(['prefix' => 'posts'], function () {

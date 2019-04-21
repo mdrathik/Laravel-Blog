@@ -33,7 +33,29 @@ class FrontendController extends Controller
          $categories=Category::all();
         //$articles =Post::where('slug',$slug)->with('comments', 'comments.user')->first();
 
-
         return view('FrontEnd.Layouts.singlepost',['Post'=>$post,'latestPosts'=>$latestPosts,'categories'=>$categories]) ->with('previous_id',$next)->with('next_id',$previous);
+    }
+
+
+    public function CategoriesPost($category_slug){
+        $latestPosts = Post::orderBy('id', 'desc')->take(4)->get();
+        $categories=Category::all();
+        $category= Category::where('slug',$category_slug)->first();
+        $posts = $category->posts()->orderBy('created_at', 'desc')->paginate(12);
+        return view('FrontEnd.Layouts.blog',['posts'=>$posts,'latestPosts'=>$latestPosts,'categories'=>$categories]);
+    }
+
+    public function Search(Request $request){
+
+        $query= $request['query'];
+
+
+        $posts = Post::Where('title', 'like', '%' . $query . '%')
+            ->orWhere('body', 'like', '%' . $query . '%')->paginate(12);
+        $latestPosts = Post::orderBy('id', 'desc')->take(4)->get();
+        $categories=Category::all();
+
+
+        return view('FrontEnd.Layouts.blog',['posts'=>$posts,'latestPosts'=>$latestPosts,'categories'=>$categories]);
     }
 }
